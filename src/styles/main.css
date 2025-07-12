@@ -1,0 +1,490 @@
+@import url('./variables.css');
+
+/* Global Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-serif);
+    background: linear-gradient(45deg, var(--color-dark-primary), var(--color-dark-secondary), var(--color-dark-tertiary));
+    color: var(--color-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Navbar styles are now in Navbar.jsx CSS (not included in the prompt, but based on the provided HTML structure, they would be handled within the component or imported into main.css) */
+/* Navigation Bar */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 15px 50px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid var(--color-gold);
+}
+
+.navbar-logo {
+    font-family: var(--font-playfair);
+    font-size: 1.8rem;
+    color: var(--color-gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-links a {
+    color: var(--color-fine-gray);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: var(--color-cyan);
+    transform: translateY(-3px);
+    text-shadow: 0 0 5px var(--color-cyan);
+}
+
+/* Language Selector */
+.language-selector {
+    margin-left: 50px;
+    padding: 5px 10px;
+    background: var(--color-dark-primary);
+    color: var(--color-white);
+    border: 1px solid var(--color-gold);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-serif);
+}
+
+/* Floating Art Particles (Enhanced) */
+.art-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, var(--color-gold), var(--color-white));
+    border-radius: 50%;
+    animation: float 25s infinite linear;
+    opacity: 0.8;
+    box-shadow: 0 0 10px var(--color-gold);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Artistic Header (Hero Section) */
+.artistic-header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-dark-primary) 0%, var(--color-dark-tertiary) 100%);
+    overflow: hidden;
+    text-align: center;
+}
+
+.artistic-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" style="stop-color:%23ffd700;stop-opacity:0.3"/><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0.1"/></radialGradient><radialGradient id="b" cx="50%" cy="50%"><stop offset="0%" style="stop-color:%234ecdc4;stop-opacity:0.3"/><stop offset="100%" style="stop-color:%23e0e0e0;stop-opacity:0.1"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23a)"/><circle cx="800" cy="300" r="200" fill="url(%23b)"/><circle cx="400" cy="700" r="180" fill="url(%23a)"/><circle cx="650" cy="500" r="120" fill="url(%23b)"/><circle cx="100" cy="850" r="100" fill="url(%23a)"/></svg>');
+    animation: morphing 15s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+@keyframes morphing {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(90deg) scale(1.1); }
+    50% { transform: rotate(180deg) scale(0.9); }
+    75% { transform: rotate(270deg) scale(1.2); }
+}
+
+.title-container {
+    position: relative;
+    z-index: 10;
+}
+
+.artistic-title {
+    font-family: var(--font-playfair);
+    font-size: 6rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--color-gold), var(--color-white), var(--color-cyan), var(--color-fine-gray));
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease-in-out infinite;
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+    margin-bottom: 30px;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    color: var(--color-fine-gray);
+    font-style: italic;
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Gallery Sections */
+.gallery-section {
+    padding: 120px 0;
+    background: var(--color-dark-secondary);
+    text-align: center;
+}
+
+.gallery-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.gallery-title {
+    font-family: var(--font-playfair);
+    font-size: 4rem;
+    color: var(--color-gold);
+    margin-bottom: 100px;
+    position: relative;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.section-subtitle {
+    font-size: 2rem;
+    color: var(--color-white);
+    margin-bottom: 60px;
+    font-style: italic;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+/* Artwork Grid and Cards */
+.artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    margin-bottom: 80px;
+}
+
+.artwork-card {
+    position: relative;
+    height: 450px;
+    border-radius: 25px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.6s ease;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    background: var(--color-dark-tertiary);
+}
+
+.artwork-card:hover {
+    transform: translateY(-25px) scale(1.08);
+    box-shadow: 0 40px 80px rgba(255, 215, 0, 0.5);
+}
+
+.artwork-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+    filter: grayscale(0.2);
+    /* Placeholder background for loading images */
+    background-color: var(--color-dark-primary);
+}
+
+.artwork-image.loading {
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ctext%20x="50%25"%20y="50%25"%20font-family="Arial%2C%20sans-serif"%20font-size="14"%20fill="white"%20text-anchor="middle"%20dy=".3em"%3E%3C/text%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+
+.artwork-card:hover .artwork-image {
+    transform: scale(1.1);
+    filter: grayscale(0);
+}
+
+.artwork-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
+    z-index: 2;
+    text-align: left;
+    transition: opacity 0.5s ease;
+}
+
+.artwork-title {
+    font-family: var(--font-playfair);
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--color-gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.artwork-artist {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--color-white);
+    margin-bottom: 10px;
+}
+
+.artwork-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-fine-gray);
+    opacity: 0.9;
+}
+
+/* Fluid Art Section */
+.fluid-art-section {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-dark-tertiary);
+    overflow: hidden;
+    text-align: center;
+}
+
+.fluid-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%, var(--color-white) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, var(--color-cyan) 0%, transparent 50%),
+                radial-gradient(circle at 20% 20%, var(--color-gold) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--color-fine-gray) 0%, transparent 50%);
+    animation: fluid-motion 25s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes fluid-motion {
+    0%, 100% { background-position: 0% 0%, 100% 100%, 50% 50%, 0% 100%; }
+    25% { background-position: 100% 0%, 0% 100%, 75% 25%, 25% 75%; }
+    50% { background-position: 50% 100%, 50% 0%, 100% 50%, 0% 50%; }
+    75% { background-position: 0% 50%, 100% 50%, 25% 75%, 75% 25%; }
+}
+
+.fluid-text {
+    position: relative;
+    z-index: 10;
+    color: var(--color-white);
+    font-family: var(--font-playfair);
+    font-size: 5rem;
+    font-weight: bold;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    line-height: 1.2;
+}
+
+/* Featured Artists Section */
+.artist-section {
+    padding: 100px 0;
+    background: var(--color-dark-primary);
+    text-align: center;
+}
+
+.artist-card-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.artist-card {
+    background: var(--color-dark-secondary);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    max-width: 350px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: left;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.artist-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(78, 205, 196, 0.3);
+}
+
+.artist-name {
+    font-family: var(--font-playfair);
+    font-size: 2.5rem;
+    color: var(--color-gold);
+    margin-bottom: 15px;
+}
+
+.artist-bio {
+    font-size: 1.1rem;
+    color: var(--color-fine-gray);
+    line-height: 1.7;
+}
+
+/* Artistic Footer */
+.artistic-footer {
+    position: relative;
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--color-dark-primary), var(--color-dark-tertiary));
+    text-align: center;
+    color: var(--color-white);
+    border-top: 5px solid var(--color-gold);
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-title {
+    font-family: var(--font-playfair);
+    font-size: 3rem;
+    margin-bottom: 25px;
+    color: var(--color-cyan);
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+}
+
+.footer-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+/* Effects of Interactivity */
+.interactive-element {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-gold), var(--color-white));
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, opacity 0.3s ease;
+    opacity: 0;
+    box-shadow: 0 0 15px var(--color-gold);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .navbar-links a {
+        margin-left: 15px;
+    }
+    .artistic-title {
+        font-size: 4.5rem;
+    }
+    .subtitle {
+        font-size: 1.4rem;
+    }
+    .gallery-title {
+        font-size: 3rem;
+    }
+    .section-subtitle {
+        font-size: 1.6rem;
+    }
+    .artwork-grid {
+        gap: 30px;
+    }
+    .fluid-text {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+    }
+    .artistic-title {
+        font-size: 3rem;
+    }
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    .gallery-title {
+        font-size: 2.5rem;
+    }
+    .section-subtitle {
+        font-size: 1.4rem;
+    }
+    .artwork-grid {
+        grid-template-columns: 1fr;
+    }
+    .fluid-text {
+        font-size: 2.5rem;
+    }
+    .artist-card-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}

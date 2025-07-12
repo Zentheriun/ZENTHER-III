@@ -1,0 +1,13 @@
+:root {
+    /* Black, Gold, White, and complementary tones */
+    --color-dark-primary: #000000; /* Black */
+    --color-dark-secondary: #0a0a0a;
+    --color-dark-tertiary: #1c1c1c;
+    --color-gold: #ffd700; /* Gold */
+    --color-cyan: #4ecdc4; /* Cyan accent */
+    --color-white: #ffffff; /* White */
+    --color-fine-gray: #e0e0e0; /* Fine Gray */
+    --color-light-gray: #f5f5f5;
+    --font-serif: 'Garamond', serif;
+    --font-playfair: 'Playfair Display', serif;
+}
